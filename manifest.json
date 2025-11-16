@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "KlickPin - Pinterest Downloader",
+  "version": "1.0.0",
+  "description": "Download Pinterest pins directly with one click. Not affiliated with Pinterest.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://pinterest.com/*",
+    "https://*.pinterest.com/*",
+    "https://pin.it/*",
+    "https://klickpin.com/*",
+    "http://localhost:3000/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pinterest.com/pin/*",
+        "https://*.pinterest.com/pin/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    },
+    "default_title": "KlickPin - Pinterest Downloader"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["https://pinterest.com/*", "https://*.pinterest.com/*"]
+    }
+  ]
+}
+

@@ -1,0 +1,53 @@
+/* KlickPin Download Button Styles - Icon Only */
+
+.klickpin-download-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #BD081C !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  width: 36px !important;
+  height: 36px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  font-family: inherit !important;
+  line-height: 1 !important;
+  margin-left: 8px !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+  z-index: 10000 !important;
+  position: relative !important;
+  /* Prevent tooltip from parent elements */
+  pointer-events: auto !important;
+}
+
+.klickpin-download-btn:hover:not(:disabled) {
+  background-color: #A00715 !important;
+}
+
+.klickpin-download-btn:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+}
+
+.klickpin-download-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Prevent tooltip inheritance */
+.klickpin-download-btn[title] {
+  pointer-events: none !important;
+}
+
+/* Ensure button appears inline with other buttons */
+.klickpin-download-btn {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
