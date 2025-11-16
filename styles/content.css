@@ -11,17 +11,20 @@
   padding: 8px !important;
   width: 36px !important;
   height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
   cursor: pointer !important;
   transition: background-color 0.2s ease !important;
   font-family: inherit !important;
   line-height: 1 !important;
-  margin-left: 8px !important;
+  margin: 0 !important;
   vertical-align: middle !important;
   box-sizing: border-box !important;
   z-index: 10000 !important;
   position: relative !important;
   /* Prevent tooltip from parent elements */
   pointer-events: auto !important;
+  flex-shrink: 0 !important;
 }
 
 .klickpin-download-btn:hover:not(:disabled) {
