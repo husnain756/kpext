@@ -5,57 +5,56 @@
   'use strict';
 
   const API_BASE_URL = 'http://localhost:4000/api';
-  const PIN_RED = '#BD081C';
-  const PIN_RED_HOVER = '#A00715';
 
-  // Create download button
+  // Create download button matching Pinterest's IconButton style
   function createDownloadButton() {
     const button = document.createElement('button');
-    button.className = 'klickpin-download-btn';
-    button.setAttribute('aria-label', 'Download pin with KlickPin');
+    button.className = 'klickpin-download-btn euRXRl';
+    button.setAttribute('aria-label', 'Download');
+    button.setAttribute('title', 'Download');
     button.setAttribute('data-klickpin', 'true');
     button.type = 'button';
+    button.tabIndex = 0;
     
-    button.innerHTML = `
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 15.577l-3.539-3.538 1.414-1.414L11 12.586V4h2v8.586l1.125-1.125 1.414 1.414L12 15.577z" fill="currentColor"/>
-        <path d="M19 9v10H5V9H3v11a1 1 0 001 1h16a1 1 0 001-1V9h-2z" fill="currentColor"/>
-      </svg>
-    `;
+    // Create wrapper div matching Pinterest's structure
+    const wrapperDiv = document.createElement('div');
+    wrapperDiv.className = 'dVx3J_ Q3hcOU mm_g7v';
     
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'VHreRh kHGn_J XjRT60 bCyBlM';
+    iconDiv.style.height = '48px';
+    iconDiv.style.width = '48px';
+    
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('aria-label', '');
+    svg.setAttribute('class', 'aTSQd5 hL9n03 _ByyDT');
+    svg.setAttribute('height', '24');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '24');
+    
+    // Download icon matching Pinterest's upload icon style (square with downward arrow)
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M6.3 12.2 12 17.92l5.7-5.7-1.4-1.4L13 14.1V3h-2v11.09l-3.3-3.3zM2 18v-5H0v5a4 4 0 0 0 4 4h16a4 4 0 0 0 4-4v-5h-2v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2');
+    
+    svg.appendChild(path);
+    iconDiv.appendChild(svg);
+    wrapperDiv.appendChild(iconDiv);
+    button.appendChild(wrapperDiv);
+    
+    // Match Pinterest's button styling
     Object.assign(button.style, {
+      backgroundColor: 'transparent',
+      border: 'none',
+      padding: '0',
+      margin: '0',
+      cursor: 'pointer',
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: PIN_RED,
-      color: '#FFFFFF',
-      border: 'none',
-      borderRadius: '8px',
-      padding: '8px',
-      width: '36px',
-      height: '36px',
-      cursor: 'pointer',
-      transition: 'background-color 0.2s ease',
       fontFamily: 'inherit',
-      lineHeight: '1',
-      marginLeft: '8px',
-      zIndex: '10000',
-      position: 'relative',
-      verticalAlign: 'middle'
-    });
-
-    button.addEventListener('mouseenter', (e) => {
-      e.stopPropagation();
-      if (!button.disabled) {
-        button.style.backgroundColor = PIN_RED_HOVER;
-      }
-    });
-
-    button.addEventListener('mouseleave', (e) => {
-      e.stopPropagation();
-      if (!button.disabled) {
-        button.style.backgroundColor = PIN_RED;
-      }
+      outline: 'none'
     });
 
     ['mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(eventType => {
@@ -233,13 +232,21 @@
       });
 
       // Only show success after download is initiated successfully
-      button.style.backgroundColor = '#4CAF50';
+      // Temporarily change icon color to green for feedback
+      const svg = button.querySelector('svg');
+      if (svg) {
+        svg.style.fill = '#4CAF50';
+        svg.style.color = '#4CAF50';
+      }
       setTimeout(() => {
         button.disabled = false;
         button.dataset.downloading = 'false';
         button.style.opacity = '1';
         button.style.cursor = 'pointer';
-        button.style.backgroundColor = PIN_RED;
+        if (svg) {
+          svg.style.fill = '#111111';
+          svg.style.color = '#111111';
+        }
       }, 1500);
 
     } catch (error) {
@@ -254,7 +261,11 @@
       button.dataset.downloading = 'false';
       button.style.opacity = '1';
       button.style.cursor = 'pointer';
-      button.style.backgroundColor = PIN_RED;
+      const svg = button.querySelector('svg');
+      if (svg) {
+        svg.style.fill = '#111111';
+        svg.style.color = '#111111';
+      }
     }
   }
 

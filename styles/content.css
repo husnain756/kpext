@@ -1,56 +1,99 @@
-/* KlickPin Download Button Styles - Icon Only */
+/* KlickPin Download Button Styles - Matching Pinterest IconButton */
 
 .klickpin-download-btn {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: #BD081C !important;
-  color: #FFFFFF !important;
-  border: none !important;
-  border-radius: 8px !important;
-  padding: 8px !important;
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  min-height: 36px !important;
-  cursor: pointer !important;
-  transition: background-color 0.2s ease !important;
   font-family: inherit !important;
-  line-height: 1 !important;
-  margin: 0 !important;
-  vertical-align: middle !important;
-  box-sizing: border-box !important;
-  z-index: 10000 !important;
+  outline: none !important;
+  transition: background-color 0.2s ease !important;
+  border-radius: 0 !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
   position: relative !important;
-  /* Prevent tooltip from parent elements */
   pointer-events: auto !important;
-  flex-shrink: 0 !important;
 }
 
 .klickpin-download-btn:hover:not(:disabled) {
-  background-color: #A00715 !important;
+  background-color: transparent !important;
+}
+
+.klickpin-download-btn:hover:not(:disabled) .VHreRh {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-radius: 16px !important;
+}
+
+.klickpin-download-btn:focus:not(:disabled) {
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+.klickpin-download-btn:focus:not(:disabled) .VHreRh {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-radius: 16px !important;
+}
+
+.klickpin-download-btn:active:not(:disabled) {
+  background-color: transparent !important;
+}
+
+.klickpin-download-btn:active:not(:disabled) .VHreRh {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 16px !important;
 }
 
 .klickpin-download-btn:disabled {
-  opacity: 0.7 !important;
+  opacity: 0.5 !important;
   cursor: not-allowed !important;
 }
 
+.klickpin-download-btn .dVx3J_ {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.klickpin-download-btn .VHreRh {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  transition: background-color 0.2s ease, border-radius 0.2s ease !important;
+}
+
 .klickpin-download-btn svg {
-  width: 16px !important;
-  height: 16px !important;
-  fill: currentColor !important;
-  flex-shrink: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+  fill: #111111 !important;
+  color: #111111 !important;
   pointer-events: none !important;
 }
 
-/* Prevent tooltip inheritance */
-.klickpin-download-btn[title] {
-  pointer-events: none !important;
-}
-
-/* Ensure button appears inline with other buttons */
-.klickpin-download-btn {
-  flex-shrink: 0 !important;
+/* Tooltip styling - ensure it shows on hover */
+.klickpin-download-btn[title]:hover::after {
+  content: attr(title) !important;
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-bottom: 8px !important;
+  padding: 6px 12px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
   white-space: nowrap !important;
+  z-index: 10001 !important;
+  pointer-events: none !important;
 }
