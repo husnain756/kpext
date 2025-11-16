@@ -13,15 +13,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({ success: true, downloadId });
       }
     });
-    return true; // Keep message channel open for async response
+    
+    return true;
   }
 });
-
-// Handle extension icon click (optional - opens popup or settings)
-chrome.action.onClicked.addListener((tab) => {
-  if (tab.url && tab.url.includes('pinterest.com/pin/')) {
-    // Already on pin page - the download button should be visible on the page
-    console.log('KlickPin: Click the download button on the pin to download!');
-  }
-});
-
